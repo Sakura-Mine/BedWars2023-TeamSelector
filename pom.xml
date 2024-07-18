@@ -6,7 +6,7 @@
 
     <groupId>com.andrei1058.bedwars</groupId>
     <artifactId>team-selector</artifactId>
-    <version>0.7</version>
+    <version>1.0.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,35 +42,13 @@
             </plugin>
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>deploy</id>
                         <phase>deploy</phase>
                         <goals>
                             <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <!-- Do not include the <configuration>...</configuration> part if you are using Sponge! -->
-                <configuration>
-                    <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <!-- Replace this with your package! -->
-                            <shadedPattern>com.andrei1058.bedwars.teamselector.libs</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -97,6 +75,10 @@
             <id>CodeMC</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
+        <repository>
+            <id>bedwars2023-releases</id>
+            <url>https://repo.tomkeuper.com/repository/releases/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -122,9 +104,9 @@
 
         <!--BedWars1058 API-->
         <dependency>
-            <groupId>com.andrei1058.bedwars</groupId>
+            <groupId>com.tomkeuper.bedwars</groupId>
             <artifactId>bedwars-api</artifactId>
-            <version>23.12</version>
+            <version>1.2.0</version>
             <scope>provided</scope>
         </dependency>
 

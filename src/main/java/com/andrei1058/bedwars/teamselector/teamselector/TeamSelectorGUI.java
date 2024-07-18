@@ -1,14 +1,14 @@
 package com.andrei1058.bedwars.teamselector.teamselector;
 
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.language.Language;
 import com.andrei1058.bedwars.teamselector.Main;
 import com.andrei1058.bedwars.teamselector.api.events.TeamSelectorChooseEvent;
 import com.andrei1058.bedwars.teamselector.api.events.TeamSelectorOpenEvent;
 import com.andrei1058.bedwars.teamselector.configuration.Config;
 import com.andrei1058.bedwars.teamselector.configuration.Messages;
+import com.tomkeuper.bedwars.api.arena.GameState;
+import com.tomkeuper.bedwars.api.arena.IArena;
+import com.tomkeuper.bedwars.api.arena.team.ITeam;
+import com.tomkeuper.bedwars.api.language.Language;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

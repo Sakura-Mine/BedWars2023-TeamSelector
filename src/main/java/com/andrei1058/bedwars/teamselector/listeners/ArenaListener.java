@@ -1,16 +1,16 @@
 package com.andrei1058.bedwars.teamselector.listeners;
 
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.events.gameplay.GameStateChangeEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerJoinArenaEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerLeaveArenaEvent;
-import com.andrei1058.bedwars.api.events.server.ArenaEnableEvent;
 import com.andrei1058.bedwars.teamselector.Main;
 import com.andrei1058.bedwars.teamselector.teamselector.ArenaPreferences;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamManager;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamSelectorAssigner;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamSelectorGUI;
+import com.tomkeuper.bedwars.api.arena.GameState;
+import com.tomkeuper.bedwars.api.arena.IArena;
+import com.tomkeuper.bedwars.api.events.gameplay.GameStateChangeEvent;
+import com.tomkeuper.bedwars.api.events.player.PlayerJoinArenaEvent;
+import com.tomkeuper.bedwars.api.events.player.PlayerLeaveArenaEvent;
+import com.tomkeuper.bedwars.api.events.server.ArenaEnableEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,6 +1,5 @@
 package com.andrei1058.bedwars.teamselector;
 
-import com.andrei1058.bedwars.api.BedWars;
 import com.andrei1058.bedwars.teamselector.api.TeamSelector;
 import com.andrei1058.bedwars.teamselector.api.TeamSelectorAPI;
 import com.andrei1058.bedwars.teamselector.configuration.Config;
@@ -9,6 +8,7 @@ import com.andrei1058.bedwars.teamselector.listeners.ArenaListener;
 import com.andrei1058.bedwars.teamselector.listeners.InventoryListener;
 import com.andrei1058.bedwars.teamselector.listeners.PlayerInteractListener;
 import com.andrei1058.bedwars.teamselector.listeners.SelectorGuiUpdateListener;
+import com.tomkeuper.bedwars.api.BedWars;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
