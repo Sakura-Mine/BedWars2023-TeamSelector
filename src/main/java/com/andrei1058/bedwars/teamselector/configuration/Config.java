@@ -32,7 +32,7 @@ public class Config {
     public static void addDefaultConfig() {
 
         //noinspection ResultOfMethodCallIgnored
-        new File("plugins/BedWars1058/Addons/TeamSelector").mkdirs();
+        new File("plugins/BedWars2023/Addons/TeamSelector").mkdirs();
 
         config = new ConfigManager(Main.plugin, "config", "plugins/BedWars1058/Addons/TeamSelector");
         YamlConfiguration yml = config.getYml();

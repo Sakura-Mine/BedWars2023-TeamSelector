@@ -3,6 +3,7 @@ package com.andrei1058.bedwars.teamselector.api.events;
 import com.tomkeuper.bedwars.api.arena.IArena;
 import com.tomkeuper.bedwars.api.arena.team.ITeam;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -40,7 +41,11 @@ public class TeamSelectorChooseEvent extends Event implements Cancellable {
     /**
      * -- GETTER --
      *  Check if event is canceled
+     * -- SETTER --
+     *  If you cancel it and the player's having a team, it will remain in it
+
      */
+    @Setter
     private boolean cancelled = false;
 
     /**
@@ -60,13 +65,6 @@ public class TeamSelectorChooseEvent extends Event implements Cancellable {
     @Override
     public boolean isCancelled() {
         return false;
-    }
-
-    /**
-     * If you cancel it and the player's having a team, it will remain in it
-     */
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
     }
 
     public @NotNull HandlerList getHandlers() {

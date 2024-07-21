@@ -59,17 +59,15 @@ public class TeamManager {
 
     public List<Player> getMembers(ITeam team, IArena arena) {
         ArenaPreferences preferences = getArena(arena);
-        if (preferences != null) {
+        if (preferences != null)
             return preferences.getMembers(team);
-        }
         return new ArrayList<>();
     }
 
     public void setPlayerTeam(Player player, IArena arena, ITeam team) {
         ArenaPreferences preferences = getArena(arena);
-        if (preferences != null) {
+        if (preferences != null)
             preferences.setPlayerTeam(player, team);
-        }
     }
 
     public ArenaPreferences getArena(IArena arena) {

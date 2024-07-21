@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.teamselector.api.events;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -24,6 +25,7 @@ public class TeamSelectorOpenEvent extends Event implements Cancellable {
      *  Check if cancelled
      *
      */
+    @Setter
     private boolean cancelled = false;
 
     /**
@@ -40,10 +42,6 @@ public class TeamSelectorOpenEvent extends Event implements Cancellable {
     @Override
     public boolean isCancelled() {
         return false;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        this.cancelled = cancelled;
     }
 
     public @NotNull HandlerList getHandlers() {

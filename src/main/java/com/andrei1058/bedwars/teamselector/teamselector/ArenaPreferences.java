@@ -16,6 +16,7 @@ public class ArenaPreferences {
 
     private final IArena arena;
 
+    @Getter
     private final HashMap<Player, ITeam> selections = new HashMap<>();
 
     protected ArenaPreferences(IArena arena) {

@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.teamselector.listeners;
 
 import com.andrei1058.bedwars.teamselector.Main;
+import com.andrei1058.bedwars.teamselector.PrivateGamesSupport;
 import com.andrei1058.bedwars.teamselector.teamselector.ArenaPreferences;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamManager;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamSelectorAssigner;
@@ -11,6 +12,7 @@ import com.tomkeuper.bedwars.api.events.gameplay.GameStateChangeEvent;
 import com.tomkeuper.bedwars.api.events.player.PlayerJoinArenaEvent;
 import com.tomkeuper.bedwars.api.events.player.PlayerLeaveArenaEvent;
 import com.tomkeuper.bedwars.api.events.server.ArenaEnableEvent;
+import me.azerima.betterprivategames.listener.PlayerGameServerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,9 +28,14 @@ public class ArenaListener implements Listener {
         if (e.getArena().getStatus() == GameState.waiting || e.getArena().getStatus() == GameState.starting) {
             Bukkit.getScheduler().runTaskLater(Main.plugin, () -> {
                 if (e.getArena().isPlayer(e.getPlayer()) || e.getArena().getStatus() != GameState.playing) {
-                    TeamSelectorGUI.giveItem(e.getPlayer(), null);
+
+                    if (PlayerGameServerListener.arenasPrivate.containsKey(e.getArena().getArenaName())){
+                        TeamSelectorGUI.giveItem(e.getPlayer(), null);
+                        if (PlayerGameServerListener.arenasPrivate.get(e.getArena().getArenaName()).equalsIgnoreCase(e.getPlayer().getName()))
+                            PrivateGamesSupport.giveItem(e.getPlayer());
+                    }
                 }
-            }, 30L);
+            }, 20L);
         }
     }
 

@@ -9,6 +9,7 @@ import com.tomkeuper.bedwars.api.arena.GameState;
 import com.tomkeuper.bedwars.api.arena.IArena;
 import com.tomkeuper.bedwars.api.arena.team.ITeam;
 import com.tomkeuper.bedwars.api.language.Language;
+import me.azerima.betterprivategames.listener.PlayerGameServerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -192,8 +193,11 @@ public class TeamSelectorGUI {
 
         //Check if the player is member of a party
         if (Main.bw.getPartyUtil().hasParty(player)) {
-            player.sendMessage(Language.getMsg(player, Messages.PARTY_DENIED));
-            return false;
+            // check if arena is private
+            if (!PlayerGameServerListener.arenasPrivate.containsKey(arena.getArenaName())){
+                player.sendMessage(Language.getMsg(player, Messages.PARTY_DENIED));
+                return false;
+            }
         }
 
         String teamDisplayName = bwt.getDisplayName(Main.bw.getPlayerLanguage(player));

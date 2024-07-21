@@ -2,6 +2,9 @@ package com.andrei1058.bedwars.teamselector.listeners;
 
 import com.andrei1058.bedwars.teamselector.Main;
 import com.andrei1058.bedwars.teamselector.teamselector.TeamSelectorGUI;
+import com.tomkeuper.bedwars.api.arena.GameState;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +21,13 @@ public class PlayerInteractListener implements Listener {
         ItemStack i = Main.bw.getVersionSupport().getItemInHand(e.getPlayer());
         if (i == null) return;
         if (i.getType() == Material.AIR) return;
+        if (i.getType() == Material.ICE){
+            e.setCancelled(true);
+            Bukkit.dispatchCommand(e.getPlayer(),"bw start");
+            Main.bw.getArenaUtil().getArenaByPlayer(e.getPlayer()).changeStatus(GameState.starting);
+            Main.bw.getArenaUtil().getArenaByPlayer(e.getPlayer()).getStartingTask().setCountdown(20);
+            e.getPlayer().sendMessage(ChatColor.YELLOW+"Starting the game...");
+        }
         if (!Main.bw.getVersionSupport().isCustomBedWarsItem(i)) return;
         if (Main.bw.getVersionSupport().getCustomData(i).equals(TeamSelectorGUI.TEAM_SELECTOR_IDENTIFIER)) {
             e.setCancelled(true);
