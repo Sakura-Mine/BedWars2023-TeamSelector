@@ -212,11 +212,11 @@ public class TeamSelectorGUI {
 
 
         //Balance Teams
-        for (ITeam t : arena.getTeams()) {
-            if (t == bwt) continue;
-            int inTeam = TeamManager.getInstance().getPlayersCount(t, arena);
-            if (playersInTeam > inTeam) {
-                if (Config.config.getBoolean(Config.BALANCE_TEAMS)) {
+        if (Config.config.getBoolean(Config.BALANCE_TEAMS)){
+            for (ITeam t : arena.getTeams()) {
+                if (t == bwt) continue;
+                int inTeam = TeamManager.getInstance().getPlayersCount(t, arena);
+                if (playersInTeam > inTeam) {
                     player.sendMessage(Language.getMsg(player, Messages.TEAM_NOT_BALANCED));
                     return false;
                 }
@@ -236,9 +236,7 @@ public class TeamSelectorGUI {
         TeamSelectorChooseEvent e = new TeamSelectorChooseEvent(player, arena, bwt, playerSelection);
         Bukkit.getPluginManager().callEvent(e);
 
-        if (e.isCancelled()) {
-            return false;
-        }
+        if (e.isCancelled()) return false;
 
         // set player team
         TeamManager.getInstance().setPlayerTeam(player, arena, bwt);

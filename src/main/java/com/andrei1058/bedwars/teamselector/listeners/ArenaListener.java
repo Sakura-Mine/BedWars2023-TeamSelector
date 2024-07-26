@@ -31,6 +31,7 @@ public class ArenaListener implements Listener {
 
                     if (PlayerGameServerListener.arenasPrivate.containsKey(e.getArena().getArenaName())){
                         TeamSelectorGUI.giveItem(e.getPlayer(), null);
+                        if (e.getArena().getPlayers().size() <=1) e.getArena().setTeamAssigner(new TeamSelectorAssigner());
                         if (PlayerGameServerListener.arenasPrivate.get(e.getArena().getArenaName()).equalsIgnoreCase(e.getPlayer().getName()))
                             PrivateGamesSupport.giveItem(e.getPlayer());
                     }

@@ -5,6 +5,7 @@ import com.tomkeuper.bedwars.api.arena.IArena;
 import com.tomkeuper.bedwars.api.arena.team.ITeam;
 import com.tomkeuper.bedwars.api.arena.team.ITeamAssigner;
 import com.tomkeuper.bedwars.api.events.gameplay.TeamAssignEvent;
+import me.azerima.betterprivategames.listener.PlayerGameServerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +25,9 @@ public class TeamSelectorAssigner implements ITeamAssigner {
         teams.addAll(arena.getTeams());
 
         // create groups from parties
-        for (Player player : arena.getPlayers()) {
+        // check if arena is not private
+        if (!PlayerGameServerListener.arenasPrivate.containsKey(arena.getArenaName()))
+            for (Player player : arena.getPlayers()) {
             // check if is party owner or someone with a big rank to identify a party
             if (!skippedFromPartyCheck.contains(player.getUniqueId()) && Main.bw.getPartyUtil().isOwner(player)) {
                 // all party members will be added to a skip list in case there are more members with
